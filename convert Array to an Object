@@ -1,0 +1,37 @@
+let user = [
+  {id:01,name:'tony'},
+  {id:02,name:'elam'}
+];
+
+let newUser = user.reduce(function(prev,curr){
+  prev[curr.id]= curr;
+  
+  return prev;
+},{});
+
+/*
+line 6 we use the .reduce() method on the user variable which is an Array.
+  -we pass in a callback function function which is executed once for each entry in the user Array.
+  
+  -the first parameter is set to an Object | this is done on line 10 with ,{} | 
+    here we can set the initial value of the first parameter which is 'prev'
+    //CONSOLE DISPLAY SHOWS: prev = Object{}
+  
+  -the second parameter is set to the first entry of the user Array 
+    on the first pass of the evaluation of the user Array
+    //CONSOLE DISPLAY SHOWS: curr = Object {id: 01, name: "tony"}
+    on the second pass of the evaluation of the user Array
+    //CONSOLE DISPLAY SHOWS: curr = Object {id: 02, name: "elam"}
+line 7 we can set the first property of our 'prev' Object using the following syntax 
+  -square bracket notation as a selector -> prev[curr.id]  = curr
+  -so we are saying that on the right side of the =(assignment operator) curr is our first Object
+    on the left side of the =(assignment operator) we want to select the id property of the 'curr' Object 
+    using the following syntax [curr.id]
+    then we will assign that as the first property or key of our 'prev' Object
+line 9 after all passes of the evaluation are complete, which in this case is only 2 passes because our let user variable is an
+    Array with 2 Objects, we return 'prev' Object that now contains the 2 Objects
+    //{id:01,name:'tony'},{id:02,name:'elam'}
+    NOTE: remember using .reduce() on 'user' variable means looking into its content | so we're looking into the Array of the 'user' variable
+    and viewing the 2 Objects present | so we begin our evaluation here with the 2 Objects
+    
+
